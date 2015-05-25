@@ -40,7 +40,7 @@ public class Grid extends JComponent {
         int celY;
         
         //vriend tekenen
-        g.setColor(Color.WHITE);
+        g.setColor(Color.BLUE);
         celX = afmeting + (vriendPositie.x * afmeting);
         celY = afmeting + (vriendPositie.y * afmeting);
         g.fillOval(celX, celY, 38, 38);
