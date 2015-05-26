@@ -13,7 +13,7 @@ import javax.swing.JComponent;
 
 /**
  *
- * @author Danny
+ * @author huseyin
  */
 public class Grid extends JComponent {
 
