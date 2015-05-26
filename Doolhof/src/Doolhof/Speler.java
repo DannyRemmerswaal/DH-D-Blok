@@ -9,7 +9,7 @@ import java.awt.Point;
 
 /**
  *
- * @author Danny
+ * @author Danny R
  */
 public class Speler {
 
