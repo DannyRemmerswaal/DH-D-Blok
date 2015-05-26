@@ -27,7 +27,7 @@ public class Maze {
     private static Speler speler;
     private static Vriend vriend;
     private static JFrame venster;
-    private static boolean start = false;
+    private static boolean start = true;
     private static final Veld[][] velden = {
         {new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur())},
         {new Veld(new Muur()), new Veld(), new Veld(), new Veld(new Muur()), new Veld(), new Veld(new Muur()), new Veld(new Muur()), new Veld(), new Veld(new Muur())},
