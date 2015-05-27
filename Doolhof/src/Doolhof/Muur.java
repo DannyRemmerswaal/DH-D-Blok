@@ -9,6 +9,6 @@ package Doolhof;
  *
  * @author Danny
  */
-public class Muur extends DoolhofObject {
+public class Muur extends SpelItem {
     
 }

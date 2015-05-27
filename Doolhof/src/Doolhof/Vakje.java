@@ -11,27 +11,27 @@ package Doolhof;
  */
 
 public class Vakje{
-    private DoolhofObject object;
+    private SpelItem object;
     
     public Vakje() {
         this.object = null;
     }
     
-    public Vakje(DoolhofObject object) {
+    public Vakje(SpelItem object) {
         this.object = object;
     }
 
     /**
      * @return the object
      */
-    public DoolhofObject getObject() {
+    public SpelItem getObject() {
         return object;
     }
 
     /**
      * @param object the object to set
      */
-    public void setObject(DoolhofObject object) {
+    public void setObject(SpelItem object) {
         this.object = object;
     }
 }

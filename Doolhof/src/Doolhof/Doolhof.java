@@ -66,7 +66,7 @@ public class Doolhof {
         knoppen.add(jbReset);
 
         venster = new JFrame();
-        venster.setTitle("Doolhof");
+        venster.setTitle("Doolhof versie: 1.0");
         venster.setLayout(new BorderLayout());
         venster.addKeyListener(listener);
         venster.setSize(500, 500);

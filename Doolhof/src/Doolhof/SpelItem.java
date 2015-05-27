@@ -11,7 +11,7 @@ import java.awt.Point;
  *
  * @author Danny
  */
-public abstract class DoolhofObject {
+public abstract class SpelItem {
     
     private Point positie;
     
