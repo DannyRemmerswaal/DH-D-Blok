@@ -15,7 +15,7 @@ public abstract class SpelItem {
     
     private Point positie;
     
-    public void verwijderen() {
+    public void verdwijnt() {
         
     }
     
