@@ -13,9 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -61,6 +59,7 @@ public class Doolhof {
         JButton jbReset = new JButton("Reset");
         jbReset.addActionListener(actionReset);
         jbReset.setFocusable(false);
+        
         knoppen.add(jbStart);
         knoppen.add(jbStop);
         knoppen.add(jbReset);
@@ -131,7 +130,7 @@ public class Doolhof {
                 }
                 // Vriend check
                 if (speler.getPositie().equals(vriend.getEindpositie())) {
-                    System.out.println("Gewonnen!");
+                    JOptionPane.showMessageDialog(null, "Gewonnen!");
                     start = false;
                 }
                 // Speler tekenen
