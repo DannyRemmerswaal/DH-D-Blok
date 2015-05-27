@@ -21,27 +21,27 @@ import javax.swing.JPanel;
  *
  * @author Danny
  */
-public class Maze {
+public class Doolhof {
 
-    private static Grid grid;
+    private static Bord bord;
     private static Speler speler;
     private static Vriend vriend;
     private static JFrame venster;
     private static boolean start = true;
-    private static final Veld[][] velden = {
-        {new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur())},
-        {new Veld(new Muur()), new Veld(), new Veld(), new Veld(new Muur()), new Veld(), new Veld(new Muur()), new Veld(new Muur()), new Veld(), new Veld(new Muur())},
-        {new Veld(new Muur()), new Veld(), new Veld(new Muur()), new Veld(new Muur()), new Veld(), new Veld(), new Veld(), new Veld(), new Veld(new Muur())},
-        {new Veld(new Muur()), new Veld(), new Veld(), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(), new Veld(new Muur())},
-        {new Veld(new Muur()), new Veld(), new Veld(new Muur()), new Veld(), new Veld(), new Veld(), new Veld(new Muur()), new Veld(), new Veld(new Muur())},
-        {new Veld(new Muur()), new Veld(), new Veld(), new Veld(), new Veld(new Muur()), new Veld(), new Veld(), new Veld(), new Veld(new Muur())},
-        {new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur()), new Veld(new Muur())
+    private static final Vakje[][] velden = {
+        {new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur())},
+        {new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur())},
+        {new Vakje(new Muur()), new Vakje(), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur())},
+        {new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur())},
+        {new Vakje(new Muur()), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur())},
+        {new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur())},
+        {new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur())
         }
     };
 
     public static void main(String[] a) {
-        grid = new Grid();
-        grid.setPreferredSize(new Dimension(300, 300));
+        bord = new Bord();
+        bord.setPreferredSize(new Dimension(300, 300));
 
         KeyListener listener = new Keys();
         ActionListener actionStart = new StartListener() {
@@ -72,22 +72,22 @@ public class Maze {
         venster.setSize(500, 500);
         venster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         venster.add(knoppen, BorderLayout.NORTH);
-        venster.add(grid, BorderLayout.CENTER);
+        venster.add(bord, BorderLayout.CENTER);
         venster.setVisible(true);
 
         gridVullen();
 
         speler = new Speler();
         vriend = new Vriend();
-        grid.drawSpeler(speler.getPositie());
-        grid.drawVriend(vriend.getEindpositie());
+        bord.drawSpeler(speler.getPositie());
+        bord.drawVriend(vriend.getEindpositie());
     }
     
     public static void gridVullen() {
         for (int i = 0; i < velden.length; i++) {
             for (int j = 0; j < velden[i].length; j++) {
                 if (velden[i][j].getObject() instanceof Muur) {
-                    grid.veldVullen(j, i);
+                    bord.veldVullen(j, i);
                 }
             }
         }
@@ -135,7 +135,7 @@ public class Maze {
                     start = false;
                 }
                 // Speler tekenen
-                grid.drawSpeler(speler.getPositie());
+                bord.drawSpeler(speler.getPositie());
             }
         }
     }
@@ -163,7 +163,7 @@ public class Maze {
             start = true;
             Point reset = new Point(1, 1);
             speler.setPositie(reset);
-            grid.drawSpeler(speler.getPositie());
+            bord.drawSpeler(speler.getPositie());
         }
     }
 

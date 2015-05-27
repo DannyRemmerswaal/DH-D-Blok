@@ -37,7 +37,7 @@ public class Image extends JFrame {
         
         //Friend friend = new Friend("/Doolhof/images/wall.png");
         BufferedImage image = setImage("/Doolhof/images/wall");
-        Wall wall = new Wall(image);
+        Image.Wall wall = new Image.Wall(image);
         
         JButton button = new JButton("asdf");
         panel.add(label);

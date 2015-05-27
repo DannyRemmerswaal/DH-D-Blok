@@ -10,14 +10,14 @@ package Doolhof;
  * @author Danny
  */
 
-public class Veld{
+public class Vakje{
     private DoolhofObject object;
     
-    public Veld() {
+    public Vakje() {
         this.object = null;
     }
     
-    public Veld(DoolhofObject object) {
+    public Vakje(DoolhofObject object) {
         this.object = object;
     }
 

@@ -16,19 +16,19 @@ import javax.swing.JComponent;
  *
  * @author Danny
  */
-public class Grid extends JComponent {
+public class Bord extends JComponent {
 
     private final ArrayList<Point> cellen;
     private final int afmeting = 40;
     private Point spelerPositie;
     private Point vriendPositie;
     
-    public Grid() {
+    public Bord() {
         cellen = new ArrayList<>();
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Point cel : cellen) {
             int cellX = afmeting + (cel.x * afmeting);
