@@ -5,6 +5,8 @@
  */
 package Doolhof;
 
+import java.awt.Image;
+
 /**
  *
  * @author Danny
@@ -15,7 +17,8 @@ public class WallTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Image image = new Image();
+        
+        //Image image = new Image() {};
 
     }
     

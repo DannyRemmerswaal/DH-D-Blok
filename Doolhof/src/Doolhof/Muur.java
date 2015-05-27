@@ -5,6 +5,7 @@
  */
 package Doolhof;
 
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -16,7 +17,7 @@ public class Muur extends SpelItem {
     
     public Muur(){
         
-          //ImageIcon kruimel = new ImageIcon("src//images/wall.png");
-         // muur = kruimel.getImage();
+          //ImageIcon img = new ImageIcon("/Doolhof/images/wall.png");
+          //muur = img.getImage();
     }
 }

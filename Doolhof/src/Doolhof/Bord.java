@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 /**
@@ -25,6 +26,8 @@ public class Bord extends JComponent {
     
     public Bord() {
         cellen = new ArrayList<>();
+        
+        
     }
 
     @Override
@@ -33,6 +36,7 @@ public class Bord extends JComponent {
         for (Point cel : cellen) {
             int cellX = afmeting + (cel.x * afmeting);
             int cellY = afmeting + (cel.y * afmeting);
+            
             g.setColor(Color.RED);
             g.fillRect(cellX, cellY, afmeting, afmeting);
         }
