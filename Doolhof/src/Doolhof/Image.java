@@ -8,10 +8,7 @@ package Doolhof;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -20,6 +17,7 @@ import javax.swing.JPanel;
 public class Image extends JFrame {
     
     private BufferedImage dummy;
+    private Image muur;
 
     public Image() {
         createButton();
@@ -33,10 +31,10 @@ public class Image extends JFrame {
     private void createButton() {
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Doolhof/images/wall.png")));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("src/Doolhof/images/wall.png")));
         
         //Friend friend = new Friend("/Doolhof/images/wall.png");
-        BufferedImage image = setImage("/Doolhof/images/wall");
+        BufferedImage image = setImage("src/Doolhof/images/wall.png");
         Image.Wall wall = new Image.Wall(image);
         
         JButton button = new JButton("asdf");

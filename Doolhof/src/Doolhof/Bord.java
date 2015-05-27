@@ -28,7 +28,7 @@ public class Bord extends JComponent {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Point cel : cellen) {
             int cellX = afmeting + (cel.x * afmeting);

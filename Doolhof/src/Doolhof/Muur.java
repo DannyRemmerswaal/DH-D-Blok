@@ -5,10 +5,18 @@
  */
 package Doolhof;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Danny
  */
 public class Muur extends SpelItem {
+    private Image muur;
     
+    public Muur(){
+        
+          //ImageIcon kruimel = new ImageIcon("src//images/wall.png");
+         // muur = kruimel.getImage();
+    }
 }
