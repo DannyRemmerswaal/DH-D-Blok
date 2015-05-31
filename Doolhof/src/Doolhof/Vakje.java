@@ -20,7 +20,7 @@ import javax.swing.JComponent;
 
 public class Vakje extends JComponent {
 
-    private final BufferedImage veldImage = setImage("/Images/veld");
+    private final BufferedImage veldImage = setImage("/Images/vloer.png");
     private SpelItem object;
     private final Point veldPositie;
     private Vakje buurUp;

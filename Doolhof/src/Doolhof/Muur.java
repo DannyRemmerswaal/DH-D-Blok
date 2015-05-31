@@ -17,7 +17,7 @@ public class Muur extends SpelItem {
     private boolean buitenMuur;
     
     public Muur(boolean buitenMuur) {
-        image = setImage("/Images/muur");
+        image = setImage("/Images/muur.png");
         setBuitenMuur(buitenMuur);
     }
 
