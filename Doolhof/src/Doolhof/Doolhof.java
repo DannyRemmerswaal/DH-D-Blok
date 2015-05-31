@@ -23,7 +23,7 @@ import javax.swing.*;
 public final class Doolhof extends JPanel implements ActionListener {
 
     private final Timer timer;
-    private final Map map = new Map();
+    private final Level level = new Level();
     private Speler speler;
     private boolean speelbaar = true;
 
@@ -31,8 +31,8 @@ public final class Doolhof extends JPanel implements ActionListener {
         maakDoolhof();
 
         //speler referentie ophalen
-        Point point = map.getBeginPunt();
-        Veld[][] doolhofArray = map.getDoolhofArray();
+        Point point = level.getBeginPunt();
+        Vakje[][] doolhofArray = level.getDoolhofArray();
         speler = (Speler) doolhofArray[point.x][point.y].getObject();
 
         addKeyListener(new Doolhof.KeyListener());
@@ -46,8 +46,8 @@ public final class Doolhof extends JPanel implements ActionListener {
         GroupLayout.ParallelGroup horizontal = gl.createParallelGroup();
         GroupLayout.ParallelGroup vertical = gl.createParallelGroup();
 
-        for (Veld[] Array : map.getDoolhofArray()) {
-            for (Veld subArray : Array) {
+        for (Vakje[] Array : level.getDoolhofArray()) {
+            for (Vakje subArray : Array) {
                 horizontal.addComponent(subArray);
                 vertical.addComponent(subArray);
             }
@@ -66,7 +66,7 @@ public final class Doolhof extends JPanel implements ActionListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.drawImage(getSpeler().getImage(), getSpeler().getObjectPositie().x * map.getGrootte(), getSpeler().getObjectPositie().y * map.getGrootte(), null);
+        g.drawImage(getSpeler().getImage(), getSpeler().getObjectPositie().x * level.getGrootte(), getSpeler().getObjectPositie().y * level.getGrootte(), null);
     }
 
     public void reset() {
@@ -90,8 +90,7 @@ public final class Doolhof extends JPanel implements ActionListener {
         @Override
         public void keyPressed(KeyEvent e) {
             if (speelbaar) {
-                speler.actie(e, map);
-
+                speler.actie(e, level);
 
             }
         }

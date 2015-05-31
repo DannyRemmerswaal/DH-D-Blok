@@ -19,26 +19,26 @@ public final class Speler extends SpelItem {
     private boolean heeftBazooka = false;
     private Bazooka bazooka = null;
     private KeyEvent richting;
-    private Veld myVeld;
+    private Vakje myVeld;
 
-    public Speler(Point beginPunt, Veld veld) {
+    public Speler(Point beginPunt, Vakje veld) {
         image = setImage("/Images/speler.gif");
         objectPositie = beginPunt;
         this.myVeld = veld;
     }
 
-    public void actie(KeyEvent e, Map map) {
+    public void actie(KeyEvent e, Level level) {
         int key = e.getKeyCode();
         if (validKey(key)) {
             if (key != KeyEvent.VK_SPACE) {
                 this.richting = e;
                 setRichting();
                 if (!(myVeld.getBuur(e).getObject() instanceof Muur)) {
-                    Veld nieuw = myVeld.getBuur(e);
+                    Vakje nieuw = myVeld.getBuur(e);
                     if (nieuw.getObject() != null){
                         pakOp(nieuw.getObject());
                     }
-                    Veld oud = myVeld;
+                    Vakje oud = myVeld;
                     myVeld = nieuw;
                     oud.setObject(null);
                     nieuw.setObject(this);
@@ -46,8 +46,8 @@ public final class Speler extends SpelItem {
                     stappen++;
                 }
             } else {
-                System.out.println("Pew Pew");
-                schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), map );  //TODO: map referentie ophalen!!!
+                System.out.println("Schiet simulatie");
+                schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );  //TODO: map referentie ophalen!!!
             }
         }
     }
@@ -61,8 +61,8 @@ public final class Speler extends SpelItem {
         setRichting();
         if (!(myVeld.getBuur(e).getObject() instanceof Muur)) {
             this.objectPositie = new Point(objectPositie.x, objectPositie.y - 1);
-            Veld nieuw = myVeld.getBuur(e);
-            Veld oud = myVeld;
+            Vakje nieuw = myVeld.getBuur(e);
+            Vakje oud = myVeld;
             myVeld = nieuw;
             oud.setObject(null);
             nieuw.setObject(this);
@@ -98,13 +98,13 @@ public final class Speler extends SpelItem {
         }
     }
 
-    private void schiet(int raketX, int raketY, Map map) {
+    private void schiet(int raketX, int raketY, Level level) {
         //if (heeftBazooka) {
         //int raket = bazooka.getRaketAantal();
         //if (raket > 0) {
         int x = raketX;
         int y = raketY;
-        while (!(map.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
+        while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
 
             int key = getRichting().getKeyCode();
             switch (key) {
@@ -122,9 +122,9 @@ public final class Speler extends SpelItem {
                     break;
             }
         }
-        Muur muur = (Muur) map.getDoolhofArray()[y][x].getObject();
+        Muur muur = (Muur) level.getDoolhofArray()[y][x].getObject();
         if (!muur.isBuitenMuur()) {
-            map.getDoolhofArray()[y][x].setObject(null);
+            level.getDoolhofArray()[y][x].setObject(null);
         }
 
 
@@ -144,8 +144,9 @@ public final class Speler extends SpelItem {
         }
     }
 
-    private void pakOp(DoolhofObject object) {
+    private void pakOp(SpelItem object) {
         if (object instanceof Vriend) {
             JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + this.getStappen() + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);
         }
     }
+}
