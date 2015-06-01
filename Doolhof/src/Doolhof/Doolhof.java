@@ -7,6 +7,7 @@ package Doolhof;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,81 +20,33 @@ import javax.swing.*;
  *
  * @author Danny
  */
-public class Doolhof {
+public final class Doolhof extends JPanel implements ActionListener {
 
-    private static Bord bord;
-    private static Speler speler;
-    private static Vriend vriend;
-    private static JFrame venster;
-    private static boolean start = true;
-    private static final Vakje[][] velden = {
-        {new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur())},
-        {new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur())},
-        {new Vakje(new Muur()), new Vakje(), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur())},
-        {new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur())},
-        {new Vakje(new Muur()), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(new Muur())},
-        {new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur()), new Vakje(), new Vakje(), new Vakje(), new Vakje(new Muur())},
-        {new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur()), new Vakje(new Muur())
-        }
-    };
+    private final Timer timer;
+    private final Level level = new Level();
+    private Speler speler;
+    private boolean speelbaar = true;
 
-    public static void main(String[] a) {
-        bord = new Bord();
-        bord.setPreferredSize(new Dimension(300, 300));
+    public Doolhof() {
+        maakDoolhof();
 
-        KeyListener listener = new Keys();
-        ActionListener actionStart = new StartListener() {
-        };
-        ActionListener actionStop = new StopListener() {
-        };
-        ActionListener actionReset = new ResetListener() {
-        };
+        //speler referentie ophalen
+        Point point = level.getBeginPunt();
+        Vakje[][] doolhofArray = level.getDoolhofArray();
+        speler = (Speler) doolhofArray[point.x][point.y].getObject();
 
-        JPanel knoppen = new JPanel();
-        JButton jbStart = new JButton("Start");
-        jbStart.addActionListener(actionStart);
-        jbStart.setFocusable(false);
-        JButton jbStop = new JButton("Stop");
-        jbStop.addActionListener(actionStop);
-        jbStop.setFocusable(false);
-        JButton jbReset = new JButton("Reset");
-        jbReset.addActionListener(actionReset);
-        jbReset.setFocusable(false);
-        
-        knoppen.add(jbStart);
-        knoppen.add(jbStop);
-        knoppen.add(jbReset);
-
-        venster = new JFrame();
-        venster.setTitle("Doolhof versie: 1.0");
-        venster.setLayout(new BorderLayout());
-        venster.addKeyListener(listener);
-        venster.setSize(500, 500);
-        venster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        venster.add(knoppen, BorderLayout.NORTH);
-        venster.add(bord, BorderLayout.CENTER);
-        venster.setVisible(true);
-
-        gridVullen();
-
-        speler = new Speler();
-        vriend = new Vriend();
-        bord.drawSpeler(speler.getPositie());
-        bord.drawVriend(vriend.getEindpositie());
-    }
-    
-    public static void gridVullen() {
-        for (int i = 0; i < velden.length; i++) {
-            for (int j = 0; j < velden[i].length; j++) {
-                if (velden[i][j].getObject() instanceof Muur) {
-                    bord.veldVullen(j, i);
-                }
-            }
-        }
+        addKeyListener(new Doolhof.KeyListener());
+        setFocusable(true);
+        timer = new Timer(25, this);
+        timer.start();
     }
 
-    static class Keys extends KeyAdapter {
+    public void maakDoolhof() {
+        GroupLayout gl = new GroupLayout(this);
+        GroupLayout.ParallelGroup horizontal = gl.createParallelGroup();
+        GroupLayout.ParallelGroup vertical = gl.createParallelGroup();
 
+<<<<<<< HEAD
         @Override
         public void keyPressed(KeyEvent event) {
 
@@ -136,35 +89,64 @@ public class Doolhof {
                 }
                 // Speler tekenen
                 bord.drawSpeler(speler.getPositie());
+=======
+        for (Vakje[] Array : level.getDoolhofArray()) {
+            for (Vakje subArray : Array) {
+                horizontal.addComponent(subArray);
+                vertical.addComponent(subArray);
+>>>>>>> 46b1b59e897cd8a8a45c3ea1692b34203e1e3428
+            }
+        }
+
+        gl.setHorizontalGroup(horizontal);
+        gl.setVerticalGroup(vertical);
+        this.setLayout(gl);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawImage(getSpeler().getImage(), getSpeler().getObjectPositie().x * level.getGrootte(), getSpeler().getObjectPositie().y * level.getGrootte(), null);
+    }
+
+    public void reset() {
+        System.out.println("Reset");
+    }
+
+    public void repaintDoolhof() {
+        removeAll();
+        maakDoolhof();
+    }
+
+    /**
+     * @return the speler
+     */
+    public Speler getSpeler() {
+        return speler;
+    }
+
+    class KeyListener extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (speelbaar) {
+                speler.actie(e, level);
+
             }
         }
     }
 
-    static class StartListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent event) {
-            start = true;
-        }
+    public void gewonnen() {
+        JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + getSpeler().getStappen() + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);
+        setSpeelbaar(false);
     }
 
-    static class StopListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent event) {
-            start = false;
-        }
+    public void setSpeelbaar(boolean speelbaar) {
+        this.speelbaar = speelbaar;
     }
-
-    static class ResetListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent event) {
-            start = true;
-            Point reset = new Point(1, 1);
-            speler.setPositie(reset);
-            bord.drawSpeler(speler.getPositie());
-        }
-    }
-
 }

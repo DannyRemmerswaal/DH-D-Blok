@@ -11,16 +11,10 @@ import java.awt.Point;
  *
  * @author Danny
  */
-public class Vriend {
-    
-    private final Point eindpositie;
+public class Vriend extends SpelItem {
     
     public Vriend() {
-        this.eindpositie = new Point (7, 1);
+        image = setImage("/Images/vriend.gif");
     }
     
-    public Point getEindpositie() {
-        return this.eindpositie;
-    }
-
 }

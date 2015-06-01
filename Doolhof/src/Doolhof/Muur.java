@@ -13,11 +13,29 @@ import javax.swing.ImageIcon;
  * @author Danny
  */
 public class Muur extends SpelItem {
-    private Image muur;
     
-    public Muur(){
-        
-          //ImageIcon img = new ImageIcon("/Doolhof/images/wall.png");
-          //muur = img.getImage();
+    private boolean buitenMuur;
+    
+    public Muur(boolean buitenMuur) {
+        image = setImage("/Images/muur.png");
+        setBuitenMuur(buitenMuur);
     }
-}
+
+    /**
+     * @return the buitenMuur
+     */
+    public boolean isBuitenMuur() {
+        return buitenMuur;
+    }
+
+    /**
+     * @param buitenMuur the buitenMuur to set
+     */
+    public void setBuitenMuur(boolean buitenMuur) {
+        this.buitenMuur = buitenMuur;
+    }
+    
+    
+  
+    }
+
