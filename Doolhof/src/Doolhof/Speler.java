@@ -22,7 +22,7 @@ public final class Speler extends SpelItem {
     private Vakje myVeld;
 
     public Speler(Point beginPunt, Vakje veld) {
-        image = setImage("/Images/speler.gif");
+        image = setImage("/Images/speler.png");
         objectPositie = beginPunt;
         this.myVeld = veld;
     }
@@ -84,16 +84,16 @@ public final class Speler extends SpelItem {
         int keyCode = richting.getKeyCode();
         switch (keyCode) {
             case KeyEvent.VK_UP:
-                image = setImage("/Images/speler_back.gif");
+                image = setImage("/Images/speler_back.png");
                 break;
             case KeyEvent.VK_RIGHT:
-                image = setImage("/Images/speler_right.gif");
+                image = setImage("/Images/speler_right.png");
                 break;
             case KeyEvent.VK_DOWN:
-                image = setImage("/Images/speler.gif");
+                image = setImage("/Images/speler.png");
                 break;
             case KeyEvent.VK_LEFT:
-                image = setImage("/Images/speler_left.gif");
+                image = setImage("/Images/speler_left.png");
                 break;
         }
     }
