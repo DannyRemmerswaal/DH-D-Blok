@@ -27,11 +27,10 @@ public class Bord extends JComponent {
     public Bord() {
         cellen = new ArrayList<>();
         
-        
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Point cel : cellen) {
             int cellX = afmeting + (cel.x * afmeting);

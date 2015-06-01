@@ -128,6 +128,7 @@ public class Doolhof {
                     Point nieuw = new Point(x, y);
                     speler.setPositie(nieuw);
                 }
+                
                 // Vriend check
                 if (speler.getPositie().equals(vriend.getEindpositie())) {
                     JOptionPane.showMessageDialog(null, "Gewonnen!");
