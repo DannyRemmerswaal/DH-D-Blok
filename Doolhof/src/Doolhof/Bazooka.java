@@ -8,7 +8,7 @@ package Doolhof;
  *
  * @author danny
  */
-public class Bazooka {
+public class Bazooka extends SpelItem {
     private int raketAantal;
 
     /**

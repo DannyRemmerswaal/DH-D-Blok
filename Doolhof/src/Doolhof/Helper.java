@@ -8,6 +8,6 @@ package Doolhof;
  *
  * @author danny
  */
-public class Helper {
+public class Helper extends SpelItem {
     
 }
