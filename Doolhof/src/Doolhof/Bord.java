@@ -70,4 +70,8 @@ public class Bord extends JComponent {
         this.vriendPositie = positie;
         repaint();
     }
+    
+    public void drawBazooka(Point positie){
+       
+    }
 }

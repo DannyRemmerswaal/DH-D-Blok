@@ -14,6 +14,11 @@ public class Bazooka extends SpelItem {
     /**
      * @return the raketAantal
      */
+    
+    public Bazooka(){
+        image = setImage("/Images/bazooka.png");
+    }
+    
     public int getRaketAantal() {
         return raketAantal;
     }
