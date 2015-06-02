@@ -67,6 +67,10 @@ public final class Level {
                     doolhof[i][j] = vriend;
                     eindPunt = new Point(j, i);
                 }
+                if (Character.toString(map.get(i).charAt(j)).equals("b")) {
+                    Vakje bazooka = new Vakje(getGrootte() * i, getGrootte() * j, new Bazooka());
+                    doolhof[i][j] = bazooka;
+                }
             }
         }
     }
