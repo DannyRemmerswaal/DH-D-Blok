@@ -29,7 +29,7 @@ public final class Speler extends SpelItem {
 
     public void actie(KeyEvent e, Level level) {
         int key = e.getKeyCode();
-        if (validKey(key)) {
+        if (validKey(key) == true) {
             if (key != KeyEvent.VK_SPACE) {
                 this.richting = e;
                 setRichting();
@@ -49,6 +49,9 @@ public final class Speler extends SpelItem {
                 System.out.println("Schiet simulatie");
                 schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );  //TODO: map referentie ophalen!!!
             }
+        }
+        else {
+         
         }
     }
 
@@ -137,7 +140,7 @@ public final class Speler extends SpelItem {
     }
 
     private boolean validKey(int key) {
-        if (key != KeyEvent.VK_UP || key != KeyEvent.VK_RIGHT || key != KeyEvent.VK_DOWN || key != KeyEvent.VK_LEFT || key != KeyEvent.VK_SPACE) {
+        if (key == KeyEvent.VK_UP || key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_SPACE) {
             return true;
         } else {
             return false;
