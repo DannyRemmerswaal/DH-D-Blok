@@ -46,55 +46,13 @@ public final class Doolhof extends JPanel implements ActionListener {
         GroupLayout.ParallelGroup horizontal = gl.createParallelGroup();
         GroupLayout.ParallelGroup vertical = gl.createParallelGroup();
 
-<<<<<<< HEAD
-        @Override
-        public void keyPressed(KeyEvent event) {
 
-            Point oud = speler.getPositie();
-            int x = oud.x;
-            int y = oud.y;
 
-            if (start) {
-                switch (event.getKeyCode()) {
-                    case KeyEvent.VK_UP:
-                        y = y - 1;
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        y = y + 1;
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        x = x + 1;
-                        break;
-                    case KeyEvent.VK_LEFT:
-                        x = x - 1;
-                        break;
-                    case KeyEvent.VK_SPACE:
-                        System.out.println("Key: space"); //bazooka afvuren
-                        velden[1][3].setObject(null);
-                        gridVullen();
-                        
-                        break;
-                }
-                // Muur check
-                boolean muur = velden[y][x].getObject() instanceof Muur;
-                if (!muur) {
-                    Point nieuw = new Point(x, y);
-                    speler.setPositie(nieuw);
-                }
-                
-                // Vriend check
-                if (speler.getPositie().equals(vriend.getEindpositie())) {
-                    JOptionPane.showMessageDialog(null, "Gewonnen!");
-                    start = false;
-                }
-                // Speler tekenen
-                bord.drawSpeler(speler.getPositie());
-=======
         for (Vakje[] Array : level.getDoolhofArray()) {
             for (Vakje subArray : Array) {
                 horizontal.addComponent(subArray);
                 vertical.addComponent(subArray);
->>>>>>> 46b1b59e897cd8a8a45c3ea1692b34203e1e3428
+
             }
         }
 
