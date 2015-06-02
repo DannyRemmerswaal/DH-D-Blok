@@ -73,7 +73,7 @@ public final class Doolhof extends JPanel implements ActionListener {
     }
 
     public void reset() {
-        System.out.println("Reset");
+       // System.out.println("Reset");
     }
 
     public void repaintDoolhof() {

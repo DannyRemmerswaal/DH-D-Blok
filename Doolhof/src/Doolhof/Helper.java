@@ -10,4 +10,9 @@ package Doolhof;
  */
 public class Helper extends SpelItem {
     
+    public Helper() {
+        image = setImage("/Images/helper.png");
+    }
+    
+    
 }

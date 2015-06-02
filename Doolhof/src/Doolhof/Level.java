@@ -71,6 +71,14 @@ public final class Level {
                     Vakje bazooka = new Vakje(getGrootte() * i, getGrootte() * j, new Bazooka());
                     doolhof[i][j] = bazooka;
                 }
+                if (Character.toString(map.get(i).charAt(j)).equals("h")) {
+                    Vakje helper = new Vakje(getGrootte() * i, getGrootte() * j, new Helper());
+                    doolhof[i][j] = helper;
+                }
+                if (Character.toString(map.get(i).charAt(j)).equals("V")) {
+                    Vakje valsspeler = new Vakje(getGrootte() * i, getGrootte() * j, new Valsspeler());
+                    doolhof[i][j] = valsspeler;
+                }
             }
         }
     }
