@@ -14,7 +14,7 @@ import java.awt.Point;
 public class Vriend extends SpelItem {
     
     public Vriend() {
-        image = setImage("/Images/vriend.gif");
+        image = setImage("/Images/vriend.png");
     }
     
 }
