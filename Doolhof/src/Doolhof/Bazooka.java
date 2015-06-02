@@ -4,6 +4,9 @@
  */
 package Doolhof;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author danny
@@ -11,12 +14,16 @@ package Doolhof;
 public class Bazooka extends SpelItem {
     private int raketAantal;
 
+    //private Image bazooka;
+    
     /**
      * @return the raketAantal
      */
     
     public Bazooka(){
         image = setImage("/Images/bazooka.png");
+        //bazooka = img.getImage();
+        
     }
     
     public int getRaketAantal() {
