@@ -99,11 +99,6 @@ public final class Doolhof extends JPanel implements ActionListener {
         }
     }
 
-    public void gewonnen() {
-        JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + getSpeler().getStappen() + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);
-        setSpeelbaar(false);
-    }
-
     public void setSpeelbaar(boolean speelbaar) {
         this.speelbaar = speelbaar;
     }

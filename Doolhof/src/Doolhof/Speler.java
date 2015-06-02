@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Danny R
  */
-public final class Speler extends SpelItem {
+public class Speler extends SpelItem {
 
     private int stappen;
     private boolean heeftBazooka = false;
@@ -148,8 +148,6 @@ public final class Speler extends SpelItem {
     }
 
     private void pakOp(SpelItem object) {
-        if (object instanceof Vriend) {
-            JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + this.getStappen() + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);
-        }
+        object.useItem();
     }
 }

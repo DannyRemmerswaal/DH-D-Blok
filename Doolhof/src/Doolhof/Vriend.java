@@ -6,6 +6,7 @@
 package Doolhof;
 
 import java.awt.Point;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,8 +14,15 @@ import java.awt.Point;
  */
 public class Vriend extends SpelItem {
     
+    int aantalStappen = 0;
+    
     public Vriend() {
         image = setImage("/Images/vriend.png");
+    }
+    
+    @Override
+    public void useItem(){
+       JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + aantalStappen + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);   
     }
     
 }

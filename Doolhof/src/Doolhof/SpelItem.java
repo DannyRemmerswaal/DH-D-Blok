@@ -54,5 +54,7 @@ public abstract class SpelItem extends JComponent {
         this.objectPositie = objectPositie;
     }
     
-    
+    public void useItem(){
+        
+    }
 }
