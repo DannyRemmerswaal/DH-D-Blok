@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Speler extends SpelItem {
 
-    private int stappen;
+    public int stappen;
     private boolean heeftBazooka = false;
     private Bazooka bazooka = null;
     private KeyEvent richting;
@@ -46,7 +46,6 @@ public class Speler extends SpelItem {
                     stappen++;
                 }
             } else {
-                System.out.println("Schiet simulatie");
                 schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );  //TODO: map referentie ophalen!!!
             }
         }
