@@ -14,5 +14,9 @@ public class Helper extends SpelItem {
         image = setImage("/Images/helper.png");
     }
     
+     @Override
+    public void useItem(){   
+    }
+    
     
 }

@@ -148,5 +148,6 @@ public class Speler extends SpelItem {
 
     private void pakOp(SpelItem object) {
         object.useItem();
+        
     }
 }

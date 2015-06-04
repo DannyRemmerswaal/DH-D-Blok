@@ -36,4 +36,8 @@ public class Bazooka extends SpelItem {
     public void setRaketAantal(int raketAantal) {
         this.raketAantal = raketAantal;
     }
+    
+         @Override
+    public void useItem(){
+    }
 }
