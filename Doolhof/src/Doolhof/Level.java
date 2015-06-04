@@ -29,7 +29,7 @@ public final class Level {
 
     public void openLevel() {
         try {
-            Scanner in = new Scanner(new File("src/Levels/level2.txt"));
+            Scanner in = new Scanner(new File("src/Levels/level1.txt"));
             while (in.hasNextLine()) {
                 map.add(in.nextLine());
             }

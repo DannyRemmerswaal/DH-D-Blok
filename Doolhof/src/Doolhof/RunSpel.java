@@ -47,7 +47,7 @@ public class RunSpel {
         
         menu.add(start);
         menu.add(stop);
-       // menu.add(reset);
+        menu.add(reset);
         
         frame.add(menu, BorderLayout.NORTH);
         frame.add(doolhof, BorderLayout.CENTER);

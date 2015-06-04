@@ -22,7 +22,7 @@ import javax.swing.*;
  */
 public final class Doolhof extends JPanel implements ActionListener {
 
-    private final Timer timer;
+    private final Timer timer = new Timer(25, this);
     private final Level level = new Level();
     private Speler speler;
     private boolean speelbaar = true;
@@ -37,7 +37,6 @@ public final class Doolhof extends JPanel implements ActionListener {
 
         addKeyListener(new Doolhof.KeyListener());
         setFocusable(true);
-        timer = new Timer(25, this);
         timer.start();
     }
 
@@ -73,7 +72,7 @@ public final class Doolhof extends JPanel implements ActionListener {
     }
 
     public void reset() {
-       // System.out.println("Reset");
+        System.out.println("Reset");
     }
 
     public void repaintDoolhof() {
