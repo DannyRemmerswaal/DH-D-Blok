@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -19,12 +20,14 @@ public class RunSpel {
     
     
     private static final Doolhof doolhof = new Doolhof();
+    static JLabel aantalStappenGezet;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         JPanel menu = new JPanel();
+        JPanel aantalstappen = new JPanel();
         frame.setTitle("Maze game");
         frame.setLayout(new BorderLayout());
         
@@ -49,13 +52,21 @@ public class RunSpel {
         menu.add(stop);
         menu.add(reset);
         
+        JLabel text = new JLabel ("Aantal stappen gezet: ");
+        aantalStappenGezet = new JLabel("" + Speler.stappen);
+        
+        aantalstappen.add(text);
+        aantalstappen.add(aantalStappenGezet);
+        
         frame.add(menu, BorderLayout.NORTH);
         frame.add(doolhof, BorderLayout.CENTER);
-        frame.setSize(656, 552);
+        frame.add(aantalstappen, BorderLayout.SOUTH);
+        frame.setSize(660, 560);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    
     
     static class StartListener implements ActionListener {
 

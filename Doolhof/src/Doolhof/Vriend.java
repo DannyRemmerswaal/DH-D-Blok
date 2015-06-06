@@ -14,14 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class Vriend extends SpelItem {
     
-    int aantalStappen = 0;
-    
+
     public Vriend() {
         image = setImage("/Images/vriend.png");
     }
     @Override
     public void useItem(){
-       JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + aantalStappen + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);   
+       JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + Speler.stappen + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);   
     }
     
 }

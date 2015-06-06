@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Speler extends SpelItem {
 
-    public int stappen;
+    static int stappen;
     private boolean heeftBazooka = false;
     private Bazooka bazooka = null;
     private KeyEvent richting;
@@ -44,6 +44,7 @@ public class Speler extends SpelItem {
                     nieuw.setObject(this);
                     this.objectPositie = new Point(myVeld.getVeldPositie().x, myVeld.getVeldPositie().y);
                     stappen++;
+                    RunSpel.aantalStappenGezet.setText(Integer.toString(stappen));
                 }
             } else {
                 schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );  //TODO: map referentie ophalen!!!
