@@ -62,7 +62,6 @@ public class RunSpel {
         frame.add(doolhof, BorderLayout.CENTER);
         frame.add(aantalstappen, BorderLayout.SOUTH);
         frame.setSize(660, 560);
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

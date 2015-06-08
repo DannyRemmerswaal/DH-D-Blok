@@ -12,32 +12,15 @@ import javax.swing.ImageIcon;
  * @author danny
  */
 public class Bazooka extends SpelItem {
-    private int raketAantal;
 
-    //private Image bazooka;
-    
-    /**
-     * @return the raketAantal
-     */
     
     public Bazooka(){
-        image = setImage("/Images/bazooka.png");
-        //bazooka = img.getImage();
-        
+        image = setImage("/Images/bazooka.png");       
     }
     
-    public int getRaketAantal() {
-        return raketAantal;
-    }
 
-    /**
-     * @param raketAantal the raketAantal to set
-     */
-    public void setRaketAantal(int raketAantal) {
-        this.raketAantal = raketAantal;
-    }
-    
-         @Override
+    @Override
     public void useItem(){
+    Speler.heeftBazooka = true;
     }
 }

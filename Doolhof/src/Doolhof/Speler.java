@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 public class Speler extends SpelItem {
 
     static int stappen;
-    private boolean heeftBazooka = false;
-    private Bazooka bazooka = null;
+    static boolean heeftBazooka = false;
+    private Bazooka bazooka = new Bazooka();
     private KeyEvent richting;
     private Vakje myVeld;
 
@@ -46,36 +46,22 @@ public class Speler extends SpelItem {
                     stappen++;
                     RunSpel.aantalStappenGezet.setText(Integer.toString(stappen));
                 }
-            } else {
+            } 
+            if(key == KeyEvent.VK_SPACE) {
                 schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );  //TODO: map referentie ophalen!!!
+                heeftBazooka = false;
             }
         }
         else {
          
         }
     }
-
-//        myVeld.setObject(null);
-//        this.objectPositie = new Point(getObjectPositie().x + x, getObjectPositie().y + y);
-//        stappen += 1;
     
-
-    private void lopen(KeyEvent e) {
-        setRichting();
-        if (!(myVeld.getBuur(e).getObject() instanceof Muur)) {
-            this.objectPositie = new Point(objectPositie.x, objectPositie.y - 1);
-            Vakje nieuw = myVeld.getBuur(e);
-            Vakje oud = myVeld;
-            myVeld = nieuw;
-            oud.setObject(null);
-            nieuw.setObject(this);
-            stappen++;
-        }
-    }
-
+    
     /**
      * @return the richting
      */
+    
     public KeyEvent getRichting() {
         return richting;
     }
@@ -102,9 +88,7 @@ public class Speler extends SpelItem {
     }
 
     private void schiet(int raketX, int raketY, Level level) {
-        //if (heeftBazooka) {
-        //int raket = bazooka.getRaketAantal();
-        //if (raket > 0) {
+        if (heeftBazooka){
         int x = raketX;
         int y = raketY;
         while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
@@ -130,9 +114,11 @@ public class Speler extends SpelItem {
             level.getDoolhofArray()[y][x].setObject(null);
         }
 
-
-        //}
-        //}
+        }
+        else
+        {
+        System.out.println("Nog geen Bazooka opgepakt!");
+        }
     }
 
     public int getStappen() {
