@@ -69,7 +69,7 @@ public class Speler extends SpelItem {
     /**
      * @param richting the richting to set
      */
-    private void setRichting() {
+    public void setRichting() {
         int keyCode = richting.getKeyCode();
         switch (keyCode) {
             case KeyEvent.VK_UP:
@@ -87,7 +87,7 @@ public class Speler extends SpelItem {
         }
     }
 
-    private void schiet(int raketX, int raketY, Level level) {
+    public void schiet(int raketX, int raketY, Level level) {
         if (heeftBazooka){
         int x = raketX;
         int y = raketY;
@@ -125,7 +125,7 @@ public class Speler extends SpelItem {
         return stappen;
     }
 
-    private boolean validKey(int key) {
+    public boolean validKey(int key) {
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_SPACE) {
             return true;
         } else {
@@ -133,7 +133,7 @@ public class Speler extends SpelItem {
         }
     }
 
-    private void pakItemOp(SpelItem object) {
+    public void pakItemOp(SpelItem object) {
         object.useItem();
         
     }
