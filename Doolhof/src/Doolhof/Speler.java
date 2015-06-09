@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class Speler extends SpelItem {
 
-    static int stappen;
-    static boolean heeftBazooka = false;
+    public static int stappen;
+    public static boolean heeftBazooka = false;
     private Bazooka bazooka = new Bazooka();
     private KeyEvent richting;
     private Vakje myVeld;
@@ -27,7 +27,7 @@ public class Speler extends SpelItem {
         this.myVeld = veld;
     }
 
-    public void actie(KeyEvent e, Level level) {
+    public void actieBeweeg(KeyEvent e, Level level) {
         int key = e.getKeyCode();
         if (validKey(key) == true) {
             if (key != KeyEvent.VK_SPACE) {
@@ -36,7 +36,7 @@ public class Speler extends SpelItem {
                 if (!(myVeld.getBuur(e).getObject() instanceof Muur)) {
                     Vakje nieuw = myVeld.getBuur(e);
                     if (nieuw.getObject() != null){
-                        pakOp(nieuw.getObject());
+                        pakItemOp(nieuw.getObject());
                     }
                     Vakje oud = myVeld;
                     myVeld = nieuw;
@@ -117,7 +117,7 @@ public class Speler extends SpelItem {
         }
         else
         {
-        System.out.println("Nog geen Bazooka opgepakt!");
+            JOptionPane.showMessageDialog(null, "Nog geen bazooka opgepakt!", "Oeps!", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -133,7 +133,7 @@ public class Speler extends SpelItem {
         }
     }
 
-    private void pakOp(SpelItem object) {
+    private void pakItemOp(SpelItem object) {
         object.useItem();
         
     }
