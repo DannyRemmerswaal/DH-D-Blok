@@ -18,8 +18,8 @@ public class Speler extends SpelItem {
     static int stappen;
     static boolean heeftBazooka = false;
     private Bazooka bazooka = new Bazooka();
-    private KeyEvent richting;
-    private Vakje myVeld;
+    private Richting richting;
+    static Vakje myVeld;
 
     public Speler(Point beginPunt, Vakje veld) {
         image = setImage("/Images/speler.png");
@@ -31,15 +31,14 @@ public class Speler extends SpelItem {
         int key = e.getKeyCode();
         if (validKey(key) == true) {
             if (key != KeyEvent.VK_SPACE) {
-                this.richting = e;
-                setRichting();
-                if (!(myVeld.getBuur(e).getObject() instanceof Muur)) {
-                    Vakje nieuw = myVeld.getBuur(e);
+                setRichting(key);
+                if (!(myVeld.getBuur(richting).getObject() instanceof Muur)) {
+                    Vakje nieuw = myVeld.getBuur(richting);                    
+                    Vakje oud = myVeld;
+                    myVeld = nieuw;
                     if (nieuw.getObject() != null){
                         pakOp(nieuw.getObject());
                     }
-                    Vakje oud = myVeld;
-                    myVeld = nieuw;
                     oud.setObject(null);
                     nieuw.setObject(this);
                     this.objectPositie = new Point(myVeld.getVeldPositie().x, myVeld.getVeldPositie().y);
@@ -48,7 +47,7 @@ public class Speler extends SpelItem {
                 }
             } 
             if(key == KeyEvent.VK_SPACE) {
-                schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );  //TODO: map referentie ophalen!!!
+                schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );
                 heeftBazooka = false;
             }
         }
@@ -62,27 +61,30 @@ public class Speler extends SpelItem {
      * @return the richting
      */
     
-    public KeyEvent getRichting() {
+    public Richting getRichting() {
         return richting;
     }
 
     /**
      * @param richting the richting to set
      */
-    private void setRichting() {
-        int keyCode = richting.getKeyCode();
+    private void setRichting(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_UP:
                 image = setImage("/Images/speler_back.png");
+                this.richting = Richting.NORTH;
                 break;
             case KeyEvent.VK_RIGHT:
                 image = setImage("/Images/speler_right.png");
+                this.richting = Richting.EAST;
                 break;
             case KeyEvent.VK_DOWN:
                 image = setImage("/Images/speler.png");
+                this.richting = Richting.SOUTH;
                 break;
             case KeyEvent.VK_LEFT:
                 image = setImage("/Images/speler_left.png");
+                this.richting = Richting.WEST;
                 break;
         }
     }
@@ -93,18 +95,17 @@ public class Speler extends SpelItem {
         int y = raketY;
         while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
 
-            int key = getRichting().getKeyCode();
-            switch (key) {
-                case KeyEvent.VK_UP:
+            switch (richting) {
+                case NORTH:
                     y--;
                     break;
-                case KeyEvent.VK_RIGHT:
+                case EAST:
                     x++;
                     break;
-                case KeyEvent.VK_DOWN:
+                case SOUTH:
                     y++;
                     break;
-                case KeyEvent.VK_LEFT:
+                case WEST:
                     x--;
                     break;
             }
@@ -136,5 +137,9 @@ public class Speler extends SpelItem {
     private void pakOp(SpelItem object) {
         object.useItem();
         
+    }
+       
+    static Vakje getMyVeld() {
+        return myVeld;
     }
 }

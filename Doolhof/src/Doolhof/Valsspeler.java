@@ -10,12 +10,13 @@ package Doolhof;
  */
 public class Valsspeler extends SpelItem{
     int aantalStappen;
+    
     public Valsspeler(int aantalStappen) {
         this.aantalStappen = aantalStappen;
         image = setImage("/Images/valsspeler.png");
     }
     
-         @Override
+    @Override
     public void useItem(){   
     Speler.stappen -= aantalStappen;
     }

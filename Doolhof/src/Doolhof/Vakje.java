@@ -5,7 +5,9 @@
  */
 package Doolhof;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -21,16 +23,17 @@ import javax.swing.JComponent;
 public class Vakje extends JComponent {
 
     private final BufferedImage veldImage = setImage("/Images/vloer.png");
+    private final Image helperPadImage = setImage("/Images/helperPad.png");
     private SpelItem object;
     private final Point veldPositie;
     private Vakje buurUp;
     private Vakje buurRight;
     private Vakje buurDown;
     private Vakje buurLeft;
+    private boolean snelleRoute = false;
 
     public Vakje(int x, int y, SpelItem object) {
-        veldPositie = new Point(x, y);
-        
+        veldPositie = new Point(x, y);       
         this.object = object;
     }
 
@@ -38,6 +41,9 @@ public class Vakje extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(veldImage, getVeldPositie().y, getVeldPositie().x, null);
+            if (snelleRoute) {
+            g.drawImage(helperPadImage, getVeldPositie().y, getVeldPositie().x, null);
+        }
         if (getObject() != null) {
             g.drawImage(getObject().getImage(), getVeldPositie().y, getVeldPositie().x, null);
         }
@@ -60,17 +66,16 @@ public class Vakje extends JComponent {
         this.object = object;
     }
 
-    public Vakje getBuur(KeyEvent e) {
-        int keyCode = e.getKeyCode();
+    public Vakje getBuur(Richting richting) {
         Vakje veld = null;
-        switch (keyCode) {
-            case KeyEvent.VK_UP:
+        switch (richting) {
+            case NORTH:
                 veld = buurUp; break;
-            case KeyEvent.VK_RIGHT:
+            case EAST:
                 veld = buurRight; break;
-            case KeyEvent.VK_DOWN:
+            case SOUTH:
                 veld = buurDown; break;
-            case KeyEvent.VK_LEFT:
+            case WEST:
                 veld = buurLeft; break;
         }
         return veld;
@@ -88,5 +93,9 @@ public class Vakje extends JComponent {
      */
     public Point getVeldPositie() {
         return veldPositie;
+    }
+    
+        public void setSnelleRoute(boolean snelleRoute) {
+        this.snelleRoute = snelleRoute;
     }
 }
