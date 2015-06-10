@@ -54,7 +54,7 @@ public class SpelerTest {
         System.out.println("getRichting");
         Speler instance = null;
         KeyEvent expResult = null;
-        KeyEvent result = instance.getRichting();
+        Richting result = instance.getRichting();
         assertEquals(expResult, result);
     }
 
