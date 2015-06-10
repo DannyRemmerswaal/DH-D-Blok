@@ -8,10 +8,11 @@ import java.awt.Point;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author danny
+ * @author danny & huseyin 
  */
 public final class Level {
 
@@ -34,7 +35,7 @@ public final class Level {
                 map.add(in.nextLine());
             }
         } catch (Exception e) {
-            System.out.println("Level kon niet worden geladen.");
+            JOptionPane.showMessageDialog(null, "Level kon niet worden geladen.");
         }
     }
 
