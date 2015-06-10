@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class Speler extends SpelItem {
 
-    static int stappen;
-    static boolean heeftBazooka = false;
+    public static int stappen;
+    public static boolean heeftBazooka = false;
     private Bazooka bazooka = new Bazooka();
     private Richting richting;
     static Vakje myVeld;
@@ -27,7 +27,7 @@ public class Speler extends SpelItem {
         this.myVeld = veld;
     }
 
-    public void actie(KeyEvent e, Level level) {
+    public void actieBeweeg(KeyEvent e, Level level) {
         int key = e.getKeyCode();
         if (validKey(key) == true) {
             if (key != KeyEvent.VK_SPACE) {
@@ -37,7 +37,7 @@ public class Speler extends SpelItem {
                     Vakje oud = myVeld;
                     myVeld = nieuw;
                     if (nieuw.getObject() != null){
-                        pakOp(nieuw.getObject());
+                        pakItemOp(nieuw.getObject());
                     }
                     oud.setObject(null);
                     nieuw.setObject(this);
@@ -68,7 +68,7 @@ public class Speler extends SpelItem {
     /**
      * @param richting the richting to set
      */
-    private void setRichting(int keyCode) {
+        public void setRichting(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_UP:
                 image = setImage("/Images/speler_back.png");
@@ -89,7 +89,7 @@ public class Speler extends SpelItem {
         }
     }
 
-    private void schiet(int raketX, int raketY, Level level) {
+    public void schiet(int raketX, int raketY, Level level) {
         if (heeftBazooka){
         int x = raketX;
         int y = raketY;
@@ -118,7 +118,7 @@ public class Speler extends SpelItem {
         }
         else
         {
-        System.out.println("Nog geen Bazooka opgepakt!");
+            JOptionPane.showMessageDialog(null, "Nog geen bazooka opgepakt!", "Oeps!", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -126,7 +126,7 @@ public class Speler extends SpelItem {
         return stappen;
     }
 
-    private boolean validKey(int key) {
+    public boolean validKey(int key) {
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_SPACE) {
             return true;
         } else {
@@ -134,7 +134,7 @@ public class Speler extends SpelItem {
         }
     }
 
-    private void pakOp(SpelItem object) {
+    public void pakItemOp(SpelItem object) {
         object.useItem();
         
     }

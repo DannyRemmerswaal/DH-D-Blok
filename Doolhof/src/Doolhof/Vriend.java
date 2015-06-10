@@ -20,7 +20,7 @@ public class Vriend extends SpelItem {
     }
     @Override
     public void useItem(){
-       JOptionPane.showMessageDialog(this, "Je hebt gewonnen in " + Speler.stappen + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);   
+       JOptionPane.showMessageDialog(this, "Je hebt het level voltooid in " + Speler.stappen + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);   
     }
     
 }

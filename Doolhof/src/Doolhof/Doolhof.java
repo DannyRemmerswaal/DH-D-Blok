@@ -92,7 +92,7 @@ public final class Doolhof extends JPanel implements ActionListener {
         @Override
         public void keyPressed(KeyEvent e) {
             if (speelbaar) {
-                speler.actie(e, level);
+                speler.actieBeweeg(e, level);
 
             }
         }

@@ -21,6 +21,6 @@ public class Bazooka extends SpelItem {
 
     @Override
     public void useItem(){
-    Speler.heeftBazooka = true;
+        Speler.heeftBazooka = true;
     }
 }
