@@ -18,6 +18,7 @@ public class Vriend extends SpelItem {
     public Vriend() {
         image = setImage("/Images/vriend.png");
     }
+    
     @Override
     public void useItem(){
        JOptionPane.showMessageDialog(this, "Je hebt het level voltooid in " + Speler.stappen + " stappen.", "Gewonnen!", JOptionPane.PLAIN_MESSAGE);   
