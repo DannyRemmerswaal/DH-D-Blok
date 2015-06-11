@@ -118,7 +118,7 @@ public class Speler extends SpelItem {
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Nog geen bazooka opgepakt!", "Oeps!", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oeps, je hebt geen bazooka bij de hand!", "Waarschuwing!", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
