@@ -30,7 +30,7 @@ public final class Level {
 
     public void openLevel() {
         try {
-            Scanner in = new Scanner(new File("src/Levels/level3.txt"));
+            Scanner in = new Scanner(new File("src/Levels/level1.txt"));
             while (in.hasNextLine()) {
                 map.add(in.nextLine());
             }
@@ -77,7 +77,7 @@ public final class Level {
                     doolhof[i][j] = helper;
                 }
                 if (Character.toString(map.get(i).charAt(j)).equals("v")) {
-                    Vakje valsspeler = new Vakje(getGrootte() * i, getGrootte() * j, new Valsspeler(5));
+                    Vakje valsspeler = new Vakje(getGrootte() * i, getGrootte() * j, new Valsspeler(15));
                     doolhof[i][j] = valsspeler;
                 }
             }
