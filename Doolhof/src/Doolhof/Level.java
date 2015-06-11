@@ -30,12 +30,12 @@ public final class Level {
 
     public void openLevel() {
         try {
-            Scanner in = new Scanner(new File("src/Levels/level2.txt"));
+            Scanner in = new Scanner(new File("src/Levels/level3.txt"));
             while (in.hasNextLine()) {
                 map.add(in.nextLine());
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Level kon niet worden geladen.");
+            JOptionPane.showMessageDialog(null, "Er zijn geen nieuwe levels.");
         }
     }
 
