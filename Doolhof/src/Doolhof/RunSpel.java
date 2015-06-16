@@ -8,10 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.event.WindowEvent;
+import javax.swing.*;
 
 /**
  *
@@ -80,6 +78,15 @@ public class RunSpel {
         frame.pack();
         frame.setSize(breedte, hoogte);
         doolhof.requestFocusInWindow();
+    }
+    
+    public static void gameOver() {
+    int result = JOptionPane.showConfirmDialog(null, "Level opnieuw spelen?", "Game Over!", JOptionPane.YES_NO_OPTION);
+        if (result == 0) {
+           reset();
+        } else if (result == 1) {
+          frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));;
+        }    
     }
     
     
