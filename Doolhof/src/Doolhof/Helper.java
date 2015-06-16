@@ -24,12 +24,12 @@ public class Helper extends SpelItem {
     @Override
     public void useItem(){  
         Vakje v = Speler.getMyVeld();
-        zoekPad(v, pad);
+        zoekPad(v);
         printPad(kortstePad);
         System.out.println(kortstePad.size());
     }
         
-    private void zoekPad(Vakje v, ArrayList<Vakje> pad) {
+    private void zoekPad(Vakje v) {
         
         if (!(v.getObject() instanceof Muur) && !(pad.contains(v))) {
             this.pad.add(v);
@@ -41,7 +41,7 @@ public class Helper extends SpelItem {
                 }
             } else {
                 for (Richting richting : Richting.values()) {
-                    zoekPad(v.getBuur(richting), pad);
+                    zoekPad(v.getBuur(richting));
                 }
             }
             pad.remove(v);
