@@ -37,7 +37,7 @@ public final class Level {
                 map.add(in.nextLine());
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Er zijn geen nieuwe levels.");
+            JOptionPane.showMessageDialog(null, "Er zijn geen nieuwe levels, bedankt voor het spelen!" + " " + "Gemaakt door Hüseyin Coskun en Danny Remmerswaal");
         }
     }
 

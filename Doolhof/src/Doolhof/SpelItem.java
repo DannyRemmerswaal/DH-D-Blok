@@ -21,14 +21,6 @@ public abstract class SpelItem extends JComponent {
 
     public BufferedImage image;
     public Point objectPositie;
-    //public boolean buitenMuur;
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.RED);
-        g.drawImage(image, getObjectPositie().x, getObjectPositie().y, null);
-    }
 
     public BufferedImage getImage() {
         return image;
@@ -44,7 +36,7 @@ public abstract class SpelItem extends JComponent {
     }
 
     /**
-     * @return the objectPositie
+     * @return objectPositie
      */
     public Point getObjectPositie() {
         return objectPositie;
@@ -54,7 +46,8 @@ public abstract class SpelItem extends JComponent {
         this.objectPositie = objectPositie;
     }
     
-    public void useItem(){
+    public void useItem()
+    {
         
-    }
+    }      
 }
