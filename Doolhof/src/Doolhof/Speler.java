@@ -15,16 +15,16 @@ import javax.swing.JOptionPane;
  */
 public class Speler extends SpelItem {
 
-    public static int stappen;
-    public static boolean heeftBazooka = false;
+    private static int stappen;
+    private static boolean heeftBazooka = false;
     private Bazooka bazooka = new Bazooka();
     private Richting richting;
-    static Vakje myVeld;
+    private static Vakje myVeld;
 
-    public Speler(Point beginPunt, Vakje veld) {
+    public Speler(Point beginPunt, Vakje v) {
         image = setImage("/Images/speler.png");
         objectPositie = beginPunt;
-        this.myVeld = veld;
+        this.myVeld = v;
     }
 
     public void actieBeweeg(KeyEvent e, Level level) {
@@ -46,13 +46,16 @@ public class Speler extends SpelItem {
                     RunSpel.aantalStappenGezet.setText(Integer.toString(stappen));
                 }
             } 
-            if(key == KeyEvent.VK_SPACE) {
-                schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level );
+            if(key == KeyEvent.VK_SPACE && heeftBazooka == false){
+                JOptionPane.showMessageDialog(null, "Oeps, je hebt geen bazooka bij de hand!", "Waarschuwing!", JOptionPane.PLAIN_MESSAGE);    
+            }
+            if(key == KeyEvent.VK_SPACE && heeftBazooka == true) {
+                bazooka.schiet((myVeld.getVeldPositie().y /40) , (myVeld.getVeldPositie().x /40 ), level, richting);
                 heeftBazooka = false;
             }
         }
-        else {
-         
+        else 
+        {
         }
     }
     
@@ -89,43 +92,14 @@ public class Speler extends SpelItem {
         }
     }
 
-    public void schiet(int raketX, int raketY, Level level) {
-        if (heeftBazooka){
-        int x = raketX;
-        int y = raketY;
-        while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
-
-            switch (richting) {
-                case NORTH:
-                    y--;
-                    break;
-                case EAST:
-                    x++;
-                    break;
-                case SOUTH:
-                    y++;
-                    break;
-                case WEST:
-                    x--;
-                    break;
-            }
-        }
-        Muur muur = (Muur) level.getDoolhofArray()[y][x].getObject();
-        if (!muur.isBuitenMuur()) {
-            level.getDoolhofArray()[y][x].setObject(null);
-        }
-
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Oeps, je hebt geen bazooka bij de hand!", "Waarschuwing!", JOptionPane.PLAIN_MESSAGE);
-        }
-    }
-
-    public int getStappen() {
+    public static int getStappen() {
         return stappen;
     }
-
+    
+    public static void setStappen(int stappen) {
+        Speler.stappen = stappen;
+    }
+    
     public boolean validKey(int key) {
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_SPACE) {
             return true;
@@ -135,11 +109,15 @@ public class Speler extends SpelItem {
     }
 
     public void pakItemOp(SpelItem object) {
-        object.useItem();
-        
+        object.useItem();        
     }
        
     static Vakje getMyVeld() {
         return myVeld;
     }
+      
+    public static void setHeeftBazooka(boolean heeftBazooka) {
+        Speler.heeftBazooka = heeftBazooka;
+    }
+   
 }

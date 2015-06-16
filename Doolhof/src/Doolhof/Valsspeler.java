@@ -10,7 +10,7 @@ package Doolhof;
  */
 public class Valsspeler extends SpelItem{
     int aantalStappen;
-    
+    int spelerStappen;
     public Valsspeler(int aantalStappen) {
 
         this.aantalStappen = aantalStappen;
@@ -19,7 +19,8 @@ public class Valsspeler extends SpelItem{
     
     @Override
     public void useItem(){   
-    
-        Speler.stappen -= aantalStappen;
+       spelerStappen = Speler.getStappen();
+       spelerStappen -= aantalStappen;
+       Speler.setStappen(spelerStappen);
     }
 }

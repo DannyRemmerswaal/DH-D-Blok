@@ -6,6 +6,7 @@ package Doolhof;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,9 +18,38 @@ public class Bazooka extends SpelItem {
         image = setImage("/Images/bazooka.png");       
     }
     
+    
+        public void schiet(int posX, int posY, Level level, Richting richting) {
+        int x = posX;
+        int y = posY;
+        while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
+
+            switch (richting) {
+                case NORTH:
+                    y--;
+                    break;
+                case EAST:
+                    x++;
+                    break;
+                case SOUTH:
+                    y++;
+                    break;
+                case WEST:
+                    x--;
+                    break;
+            }
+        }
+        Muur muur = (Muur) level.getDoolhofArray()[y][x].getObject();
+        if (!muur.isBuitenMuur()) {
+            level.getDoolhofArray()[y][x].setObject(null);
+        }
+
+        }       
 
     @Override
     public void useItem(){
-        Speler.heeftBazooka = true;
+        Speler.setHeeftBazooka(true);
     }
-}
+
+ }
+

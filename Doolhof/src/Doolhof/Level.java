@@ -21,8 +21,10 @@ public final class Level {
     private final int grootte = 40;
     private Point beginPunt;
     private Point eindPunt;
+    private String huidiglevel;
 
-    public Level() {
+    public Level(String level) {
+        this.huidiglevel = level;
         openLevel();
         maakArray();
         setBuren();
@@ -30,7 +32,7 @@ public final class Level {
 
     public void openLevel() {
         try {
-            Scanner in = new Scanner(new File("src/Levels/level1.txt"));
+            Scanner in = new Scanner(new File(huidiglevel));
             while (in.hasNextLine()) {
                 map.add(in.nextLine());
             }

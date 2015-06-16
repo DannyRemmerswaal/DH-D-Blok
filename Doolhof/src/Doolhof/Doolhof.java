@@ -23,19 +23,20 @@ import javax.swing.*;
 public final class Doolhof extends JPanel implements ActionListener {
 
     private final Timer timer = new Timer(25, this);
-    private final Level level = new Level();
-    private Speler speler;
+    private final Level level;
+    private final Speler speler;
     private boolean speelbaar = true;
 
-    public Doolhof() {
+    public Doolhof(String huidiglevel) {
+        level = new Level(huidiglevel);
         maakDoolhof();
 
-        //speler referentie ophalen
+        //speler word  hier ophehaald
         Point point = level.getBeginPunt();
         Vakje[][] doolhofArray = level.getDoolhofArray();
         speler = (Speler) doolhofArray[point.x][point.y].getObject();
 
-        addKeyListener(new Doolhof.KeyListener());
+        addKeyListener(new KeyListener());
         setFocusable(true);
         timer.start();
     }
@@ -69,15 +70,6 @@ public final class Doolhof extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(getSpeler().getImage(), getSpeler().getObjectPositie().x * level.getGrootte(), getSpeler().getObjectPositie().y * level.getGrootte(), null);
-    }
-
-    public void reset() {
-
-    }
-
-    public void repaintDoolhof() {
-        removeAll();
-        maakDoolhof();
     }
 
     /**
