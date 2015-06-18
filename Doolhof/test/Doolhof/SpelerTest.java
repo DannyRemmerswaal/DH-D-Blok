@@ -149,4 +149,5 @@ public class SpelerTest {
         instance.actieBeweeg(rechts, level);
         assertTrue(instance.getHeeftBazooka() == true);
         }
+        
 }

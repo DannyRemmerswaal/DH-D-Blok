@@ -26,7 +26,7 @@ public class Helper extends SpelItem {
         Vakje v = Speler.getMyVeld();
         zoekPad(v);
         printPad(kortstePad);
-        System.out.println(kortstePad.size());
+        System.out.println("Het kortste pad heeft een lengte van " + kortstePad.size() + " vakjes");
     }
         
     private void zoekPad(Vakje v) {
@@ -35,6 +35,7 @@ public class Helper extends SpelItem {
             this.pad.add(v);
             if (v.getObject() instanceof Vriend) {
                 System.out.println("Vriend gevonden");
+                System.out.println("De lengte van een mogelijk pad is: " + pad.size());
                 if (this.pad.size() < padLengte || padLengte == 0) {
                     kortstePad = (ArrayList<Vakje>) pad.clone();
                     padLengte = this.pad.size();

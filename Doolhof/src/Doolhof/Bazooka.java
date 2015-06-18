@@ -22,7 +22,7 @@ public class Bazooka extends SpelItem {
         public void schiet(int posX, int posY, Level level, Richting richting) {
         int x = posX;
         int y = posY;
-        while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur)) {
+        while (!(level.getDoolhofArray()[y][x].getObject() instanceof Muur) && !(level.getDoolhofArray()[y][x].getObject() instanceof Vijand) ) {
 
             switch (richting) {
                 case NORTH:
@@ -39,12 +39,17 @@ public class Bazooka extends SpelItem {
                     break;
             }
         }
+        if (level.getDoolhofArray()[y][x].getObject() instanceof Muur){
         Muur muur = (Muur) level.getDoolhofArray()[y][x].getObject();
         if (!muur.isBuitenMuur()) {
             level.getDoolhofArray()[y][x].setObject(null);
+             }
         }
-
-        }       
+        if (level.getDoolhofArray()[y][x].getObject() instanceof Vijand){
+            level.getDoolhofArray()[y][x].setObject(null);
+             }    
+       }
+        
 
     @Override
     public void useItem(){
