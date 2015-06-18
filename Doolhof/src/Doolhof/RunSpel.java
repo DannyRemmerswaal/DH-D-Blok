@@ -39,6 +39,7 @@ public class RunSpel {
         ActionListener actionStop = new StopListener() {
         };
         ActionListener actionReset = new ResetListener() {
+            
         };
         
         JButton start = new JButton("Start");

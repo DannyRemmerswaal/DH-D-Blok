@@ -80,17 +80,24 @@ public final class Doolhof extends JPanel implements ActionListener {
     }
 
     class KeyListener extends KeyAdapter {
-
+ 
         @Override
         public void keyPressed(KeyEvent e) {
+            int key = e.getKeyCode();
             if (speelbaar) {
-                speler.actieBeweeg(e, level);
-
+                speler.actieBeweeg(key , level);
+                int stappen = speler.getStappen();
+                RunSpel.aantalStappenGezet.setText(Integer.toString(stappen));
             }
         }
     }
 
     public void setSpeelbaar(boolean speelbaar) {
         this.speelbaar = speelbaar;
+    }
+    
+    
+    public Level getLevel() {
+        return level;
     }
 }

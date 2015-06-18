@@ -27,8 +27,7 @@ public class Speler extends SpelItem {
         this.myVeld = v;
     }
 
-    public void actieBeweeg(KeyEvent e, Level level) {
-        int key = e.getKeyCode();
+    public void actieBeweeg(int key, Level level) {        
         if (validKey(key) == true) {
             if (key != KeyEvent.VK_SPACE) {
                 setRichting(key);
@@ -42,8 +41,7 @@ public class Speler extends SpelItem {
                     oud.setObject(null);
                     nieuw.setObject(this);
                     this.objectPositie = new Point(myVeld.getVeldPositie().x, myVeld.getVeldPositie().y);
-                    stappen++;
-                    RunSpel.aantalStappenGezet.setText(Integer.toString(stappen));
+                    stappen++;                   
                 }
             } 
             if(key == KeyEvent.VK_SPACE && heeftBazooka == false){
