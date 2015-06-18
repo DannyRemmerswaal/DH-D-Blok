@@ -88,6 +88,7 @@ public class SpelerTest {
         Vakje[][] doolhofArray = d.getLevel().getDoolhofArray();
         assertTrue(doolhofArray[10][11].getObject() instanceof Muur);
         }
+        
         @Test
         public void testSchietennormalemuur(){
         System.out.println("Pak een bazooka op en kijk of de normale muur vernietigd word, bij een geslaagde test is er geen object.");
@@ -120,7 +121,7 @@ public class SpelerTest {
         System.out.println("Er is geschoten");
         System.out.println("Heeft bazooka : " + instance.getHeeftBazooka());
         Vakje[][] doolhofArray = d.getLevel().getDoolhofArray();
-        assertTrue(doolhofArray[9][11].getObject() == null);
+        assertTrue(doolhofArray[10][8].getObject() == null);
         }
         
         @Test
@@ -149,4 +150,5 @@ public class SpelerTest {
         instance.actieBeweeg(rechts, level);
         assertTrue(instance.getHeeftBazooka() == true);
         }
+        
 }
