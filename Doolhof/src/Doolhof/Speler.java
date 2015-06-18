@@ -118,4 +118,7 @@ public class Speler extends SpelItem {
         Speler.heeftBazooka = heeftBazooka;
     }
    
+    public static boolean getHeeftBazooka() {
+        return heeftBazooka;
+    }
 }

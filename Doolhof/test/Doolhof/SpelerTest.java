@@ -56,4 +56,97 @@ public class SpelerTest {
         Vakje[][] doolhofArray = d.getLevel().getDoolhofArray();
         assertTrue(doolhofArray[1][1].getObject() instanceof Speler);
         }
+        
+        @Test
+        public void testSchietenbuitenmuur(){
+        System.out.println("Pak een bazooka op en kijk of de buitenmuur vernietigd word, bij een geslaagde test blijft de muur bestaan.");
+        Doolhof d = new Doolhof("src/Levels/level1.txt");
+        Level level = d.getLevel();
+        int rechts = KeyEvent.VK_RIGHT;
+        int omlaag = KeyEvent.VK_DOWN;
+        int schiet = KeyEvent.VK_SPACE;
+        Speler instance = d.getSpeler();
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(schiet, level);
+        Vakje[][] doolhofArray = d.getLevel().getDoolhofArray();
+        assertTrue(doolhofArray[10][11].getObject() instanceof Muur);
+        }
+        @Test
+        public void testSchietennormalemuur(){
+        System.out.println("Pak een bazooka op en kijk of de normale muur vernietigd word, bij een geslaagde test is er geen object.");
+        Doolhof d = new Doolhof("src/Levels/level1.txt");
+        Level level = d.getLevel();
+        int rechts = KeyEvent.VK_RIGHT;
+        int omlaag = KeyEvent.VK_DOWN;
+        int schiet = KeyEvent.VK_SPACE;
+        Speler instance = d.getSpeler();
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        System.out.println("Richting : " + instance.getRichting());
+        System.out.println("Heeft bazooka : " + instance.getHeeftBazooka());
+        instance.actieBeweeg(schiet, level);
+        System.out.println("Er is geschoten");
+        System.out.println("Heeft bazooka : " + instance.getHeeftBazooka());
+        Vakje[][] doolhofArray = d.getLevel().getDoolhofArray();
+        assertTrue(doolhofArray[9][11].getObject() == null);
+        }
+        
+        @Test
+        public void testOppakkenBazooka(){
+        System.out.println("Pak een bazooka op en kijk of de Speler de bazooka heeft, zo ja is de test geslaagd.");
+        Doolhof d = new Doolhof("src/Levels/level1.txt");
+        Level level = d.getLevel();
+        int rechts = KeyEvent.VK_RIGHT;
+        int omlaag = KeyEvent.VK_DOWN;
+        Speler instance = d.getSpeler();
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(rechts, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(omlaag, level);
+        instance.actieBeweeg(rechts, level);
+        assertTrue(instance.getHeeftBazooka() == true);
+        }
 }
