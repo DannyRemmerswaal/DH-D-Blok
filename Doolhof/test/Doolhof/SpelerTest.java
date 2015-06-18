@@ -35,6 +35,7 @@ public class SpelerTest {
         // Test lopen naar rechts zonder muur
         @Test
         public void testLopenRechts() {
+        System.out.println("");
         System.out.println("Lopen naar rechts naar een veld zonder muur");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Level level = d.getLevel();
@@ -47,6 +48,7 @@ public class SpelerTest {
         
         @Test
         public void testLopenLinks() {
+        System.out.println("");
         System.out.println("Lopen naar links naar een veld zonder muur, bij een geslaagde test zal de speler op de huidige positie blijven");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Level level = d.getLevel();
@@ -59,6 +61,7 @@ public class SpelerTest {
         
         @Test
         public void testSchietenbuitenmuur(){
+        System.out.println("");
         System.out.println("Pak een bazooka op en kijk of de buitenmuur vernietigd word, bij een geslaagde test blijft de muur bestaan.");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Level level = d.getLevel();
@@ -91,6 +94,7 @@ public class SpelerTest {
         
         @Test
         public void testSchietennormalemuur(){
+        System.out.println("");
         System.out.println("Pak een bazooka op en kijk of de normale muur vernietigd word, bij een geslaagde test is er geen object.");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Level level = d.getLevel();
@@ -126,6 +130,7 @@ public class SpelerTest {
         
         @Test
         public void testOppakkenBazooka(){
+        System.out.println("");
         System.out.println("Pak een bazooka op en kijk of de Speler de bazooka heeft, zo ja is de test geslaagd.");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Level level = d.getLevel();

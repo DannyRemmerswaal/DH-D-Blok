@@ -37,6 +37,7 @@ public class HelperTest {
      */
         @Test
     public void testPadvinderLevel1() {
+        System.out.println("");
         System.out.println("Test de mogelijke paden van level 1 & startpunt");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Speler speler = d.getSpeler();
@@ -49,6 +50,7 @@ public class HelperTest {
         
         @Test
     public void testPadvinderLevel1Helperpositie() {
+        System.out.println("");
         System.out.println("Test de mogelijke paden van level 1 & positie helper");
         Doolhof d = new Doolhof("src/Levels/level1.txt");
         Helper instance = new Helper();
@@ -60,6 +62,7 @@ public class HelperTest {
     }
         @Test
     public void testPadvinderLevel2Helperpositie() {
+        System.out.println("");
         System.out.println("Test de mogelijke paden van level 2 & positie helper");
         Doolhof d = new Doolhof("src/Levels/level2.txt");
         Helper instance = new Helper();
@@ -72,6 +75,7 @@ public class HelperTest {
                 
         @Test
     public void testPadvinderLevel3() {
+        System.out.println("");
         System.out.println("Test de mogelijke paden van level 3 & startpunt speler.");
         Doolhof d = new Doolhof("src/Levels/level3.txt");
         Speler speler = d.getSpeler();
@@ -84,6 +88,7 @@ public class HelperTest {
         
         @Test
     public void testPadvinderLevel3Helperpositie() {
+        System.out.println("");
         System.out.println("Test de mogelijke paden van level 3 & positie helper.");
         Doolhof d = new Doolhof("src/Levels/level3.txt");
         Helper instance = new Helper();
