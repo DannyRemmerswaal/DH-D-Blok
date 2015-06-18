@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author danny
  */
 public class Helper extends SpelItem {
-    
+
     private ArrayList<Vakje> pad = new ArrayList<>();
     private ArrayList<Vakje> kortstePad;   
     private int padLengte;
@@ -29,7 +29,7 @@ public class Helper extends SpelItem {
         System.out.println("Het kortste pad heeft een lengte van " + kortstePad.size() + " vakjes");
     }
         
-    private void zoekPad(Vakje v) {
+    public void zoekPad(Vakje v) {
         
         if (!(v.getObject() instanceof Muur) && !(pad.contains(v))) {
             this.pad.add(v);
@@ -54,6 +54,14 @@ public class Helper extends SpelItem {
         for (Vakje vakje : pad) {
             vakje.setSnelleRoute(true);
         }
+    }
+    
+    public ArrayList<Vakje> getKortstePad() {
+        return kortstePad;
+    }
+
+    public ArrayList<Vakje> getPad() {
+        return pad;
     }
     
 }
